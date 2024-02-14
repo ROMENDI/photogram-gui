@@ -3,7 +3,12 @@
   <dt>ID</dt>
   <dd> <%= @the_user.id %> </dd>
   <dt> Edit User </dt>
-  <dd>form goes here</dd>
+  <dd> <form action="/modify_user/<%=@the_user.id%>" method="post">
+      <label for="browser_username"> Username</label>
+      <input id="browser_username" type="text" name="input_username" value= <%=@the_user.username%>>
+
+      <button>Update user</button>
+  </dd>
 </dl>
 <h2> Own Photos(<%=@the_user.own_photos.count%>)</h2>
 <table border = "1">
