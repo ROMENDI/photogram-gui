@@ -21,5 +21,16 @@ class PhotosController < ApplicationController
     redirect_to("/photos", { :notice => "Photo deleted successfully."})
   end 
 
+  def create 
+    @the_photo = Photo.new 
+    @the_photo.image = params.fetch("input_image")
+    @the_photo.caption = params.fetch("input_caption")
+    @the_photo.owner_id = params.fetch("input_owner_id")
+    @the_photo.save 
+    
+    redirect_to("/photos/#{@the_photo.id}", { :notice => "Photo added successfully."})
+
+  end 
+
 
 end
