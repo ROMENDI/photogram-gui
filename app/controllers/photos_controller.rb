@@ -32,5 +32,13 @@ class PhotosController < ApplicationController
 
   end 
 
+  def update_photo
+    photo_id = params.fetch("path_id")
+    @the_photo = Photo.find(photo_id)
+    @the_photo.image = params.fetch("input_image")
+    @the_photo.caption = params.fetch("input_caption")
+    @the_photo.save
+    redirect_to("/photos/#{@the_photo.id}", { :notice => "Photo updated successfully"})
+  end 
 
 end
